@@ -11,11 +11,23 @@ class ProductController extends BaseController
     public function index()
     {
         $productModel = new ProductModel();
+        $search = $this->request->getGet('search');
+
+        $query = $productModel->select('products.*, categories.name as category_name, suppliers.name as supplier_name')
+                              ->join('categories', 'categories.id = products.category_id', 'left')
+                              ->join('suppliers', 'suppliers.id = products.supplier_id', 'left');
+
+        if ($search) {
+            $query->groupStart()
+                  ->like('products.name', $search)
+                  ->orLike('products.sku', $search)
+                  ->groupEnd();
+        }
+
+        $data['products'] = $query->findAll();
         
-        $data['products'] = $productModel->select('products.*, categories.name as category_name, suppliers.name as supplier_name')
-                                         ->join('categories', 'categories.id = products.category_id', 'left')
-                                         ->join('suppliers', 'suppliers.id = products.supplier_id', 'left')
-                                         ->findAll();
+        // Kirim search term ke view untuk dipertahankan di input field
+        $data['search'] = $search;
 
         return view('products/index', $data);
     }

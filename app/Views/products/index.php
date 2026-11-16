@@ -24,9 +24,23 @@
     <div class="bg-white border border-slate-200/80 rounded-2xl shadow-xs overflow-hidden">
         <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <!-- Search Bar -->
-            <div class="w-full sm:w-72">
-                <input type="text" placeholder="Cari nama produk atau SKU..." class="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all">
-            </div>
+            <form action="<?= base_url('products') ?>" method="get" class="w-full sm:w-72 relative">
+                <input 
+                    type="text" 
+                    name="search" 
+                    value="<?= request()->getGet('search') ?>"
+                    placeholder="Cari nama produk atau SKU..." 
+                    class="w-full pl-10 pr-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+                >
+                <div class="absolute left-3.5 top-2.5 text-slate-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <?php if(request()->getGet('search')): ?>
+                    <a href="<?= base_url('products') ?>" class="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </a>
+                <?php endif; ?>
+            </form>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse overflow-auto whitespace-nowrap">

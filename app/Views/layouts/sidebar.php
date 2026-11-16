@@ -10,16 +10,16 @@ $segment = $uri->getSegment(1);
         </svg>
     </button>
 
-    <div class="h-16 flex items-center px-6 border-b border-slate-100 shrink-0 overflow-hidden">
+    <div class="h-16 flex items-center px-6 border-b border-slate-100 shrink-0 overflow-hidden whitespace-nowrap">
         <div class="flex items-center space-x-3 min-w-max">
             <div class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-100 shrink-0">
                 IA
             </div>
-            <span class="sidebar-text text-lg font-bold text-slate-800 tracking-tight transition-opacity duration-300">Inventori App</span>
+            <span class="sidebar-text text-lg font-bold text-slate-800 tracking-tight transition-opacity duration-300">Inventory App</span>
         </div>
     </div>
 
-    <div class="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto overflow-x-hidden">
+    <div class="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto overflow-x-hidden whitespace-nowrap">
         <p class="sidebar-text px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 transition-opacity duration-300">Menu Utama</p>
         
         <a href="<?= base_url('/dashboard') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $segment == 'dashboard' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
@@ -33,11 +33,11 @@ $segment = $uri->getSegment(1);
         </a>
     </div>
 
-    <div class="p-4 border-t border-slate-100 shrink-0 overflow-hidden">
+    <div class="p-4 border-t border-slate-100 shrink-0 overflow-hidden whitespace-nowrap">
         <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl min-w-max">
             <div class="flex items-center space-x-3">
                 <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-700 text-xs shrink-0">
-                    AD
+                    <?= strtoupper(substr(session()->get('name'), 0, 1)) ?>
                 </div>
                 <div class="sidebar-text transition-opacity duration-300">
                     <p class="text-xs font-semibold text-slate-800"><?= session()->get('name') ?></p>
