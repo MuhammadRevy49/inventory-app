@@ -4,14 +4,12 @@ $segment = $uri->getSegment(1);
 ?>
 <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200 shadow-sm transition-all duration-300 ease-in-out md:translate-x-0 -translate-x-full flex flex-col">
     
-    <!-- Toggle Button (Desktop Only - Floating) -->
     <button id="toggle-sidebar" class="absolute -right-3 top-5 w-6 h-6 bg-white border border-slate-200 rounded-full md:flex items-center justify-center text-slate-500 hover:text-indigo-600 shadow-sm z-50 hidden transition-transform duration-300">
         <svg id="toggle-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
     </button>
 
-    <!-- Brand / Logo -->
     <div class="h-16 flex items-center px-6 border-b border-slate-100 shrink-0 overflow-hidden">
         <div class="flex items-center space-x-3 min-w-max">
             <div class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-100 shrink-0">
@@ -21,7 +19,6 @@ $segment = $uri->getSegment(1);
         </div>
     </div>
 
-    <!-- Navigation Links -->
     <div class="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto overflow-x-hidden">
         <p class="sidebar-text px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 transition-opacity duration-300">Menu Utama</p>
         
@@ -36,7 +33,6 @@ $segment = $uri->getSegment(1);
         </a>
     </div>
 
-    <!-- User Section -->
     <div class="p-4 border-t border-slate-100 shrink-0 overflow-hidden">
         <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl min-w-max">
             <div class="flex items-center space-x-3">

@@ -6,16 +6,13 @@
     <title><?= $title ?? 'Inventory App' ?></title>
     <link rel="stylesheet" href="<?= base_url('css/output.css') ?>">
     <style>
-        /* Sidebar Collapsed State */
         .sidebar-collapsed { width: 80px !important; }
         .sidebar-collapsed .sidebar-text { opacity: 0; pointer-events: none; width: 0; }
         .sidebar-collapsed #toggle-icon { transform: rotate(180deg); }
         
-        /* Main & Header Adjustment */
         .main-expanded { margin-left: 80px !important; }
         .header-expanded { margin-left: 80px !important; }
         
-        /* Smooth Transition for all */
         .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
     </style>
 </head>
@@ -50,7 +47,6 @@
             }
         }
 
-        // Desktop Toggle
         if (toggleBtn) {
             toggleBtn.addEventListener('click', () => {
                 const isCollapsed = !sidebar.classList.contains('sidebar-collapsed');
@@ -59,14 +55,12 @@
             });
         }
 
-        // Mobile Toggle
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
                 sidebar.classList.toggle('-translate-x-full');
             });
         }
 
-        // Load Initial State
         const savedState = localStorage.getItem('sidebar-collapsed') === 'true';
         if (savedState && window.innerWidth >= 768) {
             updateSidebarState(true);
