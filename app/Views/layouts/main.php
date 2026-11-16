@@ -6,23 +6,25 @@
     <title><?= $title ?? 'Inventory App' ?></title>
     <link rel="stylesheet" href="<?= base_url('css/output.css') ?>">
     <style>
-        /* Style tambahan untuk collapsed state */
-        .sidebar-collapsed { width: 5rem !important; }
-        .sidebar-collapsed .sidebar-text { opacity: 0; pointer-events: none; }
+        /* Sidebar Collapsed State */
+        .sidebar-collapsed { width: 80px !important; }
+        .sidebar-collapsed .sidebar-text { opacity: 0; pointer-events: none; width: 0; }
         .sidebar-collapsed #toggle-icon { transform: rotate(180deg); }
-        .main-expanded { margin-left: 5rem !important; }
-        .header-expanded { margin-left: 5rem !important; }
+        
+        /* Main & Header Adjustment */
+        .main-expanded { margin-left: 80px !important; }
+        .header-expanded { margin-left: 80px !important; }
+        
+        /* Smooth Transition for all */
+        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen">
 
-    <!-- Sidebar -->
     <?= view('layouts/sidebar') ?>
 
-    <!-- Navbar Atas -->
     <?= view('layouts/navbar') ?>
 
-    <!-- Konten Utama -->
     <main id="main-content" class="md:ml-64 min-h-screen transition-all duration-300">
         <div class="p-6 md:p-8">
             <?= $this->renderSection('content') ?>
@@ -36,30 +38,38 @@
         const toggleBtn = document.getElementById('toggle-sidebar');
         const mobileMenuBtn = document.getElementById('menu-btn');
 
-        // Toggle Sidebar Desktop (Collapse)
+        function updateSidebarState(isCollapsed) {
+            if (isCollapsed) {
+                sidebar.classList.add('sidebar-collapsed');
+                mainContent.classList.add('main-expanded');
+                if (header) header.classList.add('header-expanded');
+            } else {
+                sidebar.classList.remove('sidebar-collapsed');
+                mainContent.classList.remove('main-expanded');
+                if (header) header.classList.remove('header-expanded');
+            }
+        }
+
+        // Desktop Toggle
         if (toggleBtn) {
             toggleBtn.addEventListener('click', () => {
-                sidebar.classList.toggle('sidebar-collapsed');
-                mainContent.classList.toggle('main-expanded');
-                if (header) header.classList.toggle('header-expanded');
-                
-                // Opsional: Simpan state ke localStorage
-                localStorage.setItem('sidebar-collapsed', sidebar.classList.contains('sidebar-collapsed'));
+                const isCollapsed = !sidebar.classList.contains('sidebar-collapsed');
+                updateSidebarState(isCollapsed);
+                localStorage.setItem('sidebar-collapsed', isCollapsed);
             });
         }
 
-        // Mobile Toggle (Slide-in)
+        // Mobile Toggle
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
                 sidebar.classList.toggle('-translate-x-full');
             });
         }
 
-        // Cek state dari localStorage saat reload
-        if (localStorage.getItem('sidebar-collapsed') === 'true') {
-            sidebar.classList.add('sidebar-collapsed');
-            mainContent.classList.add('main-expanded');
-            if (header) header.classList.add('header-expanded');
+        // Load Initial State
+        const savedState = localStorage.getItem('sidebar-collapsed') === 'true';
+        if (savedState && window.innerWidth >= 768) {
+            updateSidebarState(true);
         }
     </script>
 </body>
