@@ -1,4 +1,4 @@
-<header class="h-16 bg-white border-b border-slate-200 sticky top-0 z-40 flex items-center justify-between px-6 md:ml-64 transition-all">
+<header class="h-16 bg-white border-b border-slate-200 sticky top-0 z-40 flex items-center justify-between px-6 md:ml-64 transition-all duration-300">
     <div class="flex items-center space-x-4">
         <!-- Hamburger Menu untuk Mobile -->
         <button id="menu-btn" class="text-slate-500 hover:text-slate-700 md:hidden focus:outline-none">
