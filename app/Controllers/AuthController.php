@@ -27,7 +27,6 @@ class AuthController extends BaseController
 
         if ($user) {
             if (password_verify($password, $user['password'])) {
-                // Simpan data session termasuk role
                 $sessionData = [
                     'id'         => $user['id'],
                     'name'       => $user['name'],

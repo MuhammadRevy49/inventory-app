@@ -38,6 +38,11 @@ $segment = $uri->getSegment(1);
             <svg class="w-5 h-5 shrink-0 <?= $segment == 'products' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
             <span class="sidebar-text transition-opacity duration-300">Produk</span>
         </a>
+
+        <a href="<?= base_url('/suppliers') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $segment == 'suppliers' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
+            <svg class="w-5 h-5 shrink-0 <?= $segment == 'suppliers' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+            <span class="sidebar-text transition-opacity duration-300">Supplier</span>
+        </a>
     </div>
 
     <div class="p-4 border-t border-slate-100 shrink-0 overflow-hidden whitespace-nowrap">
