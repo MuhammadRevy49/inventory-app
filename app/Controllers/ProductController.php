@@ -28,7 +28,6 @@ class ProductController extends BaseController
         
         // Kirim search term ke view untuk dipertahankan di input field
         $data['search'] = $search;
-
         return view('products/index', $data);
     }
 
@@ -50,14 +49,14 @@ class ProductController extends BaseController
         $productModel = new ProductModel();
 
         $saveData = [
-            'sku'            => $this->request->getPost('sku'),
-            'name'           => $this->request->getPost('name'),
             'category_id'    => $this->request->getPost('category_id'),
             'supplier_id'    => $this->request->getPost('supplier_id'),
+            'sku'            => $this->request->getPost('sku'),
+            'name'           => $this->request->getPost('name'),
+            'description'    => $this->request->getPost('description'),
             'stock'          => $this->request->getPost('stock'),
             'purchase_price' => $this->request->getPost('purchase_price'),
             'selling_price'  => $this->request->getPost('selling_price'),
-            'description'    => $this->request->getPost('description'),
         ];
 
         if (!$productModel->save($saveData)) {

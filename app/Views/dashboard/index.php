@@ -10,15 +10,15 @@
             <p class="text-2xl font-bold text-slate-800 mt-2"><?= $totalProducts ?></p>
         </div>
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs">
-            <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Produk Elektronik</p>
+            <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Perangkat Jaringan</p>
             <p class="text-2xl font-bold text-slate-800 mt-2"><?= $totalProductE ?></p>
         </div>
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs">
-            <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Produk Pakaian</p>
+            <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Kabel & Aksesoris</p>
             <p class="text-2xl font-bold text-slate-800 mt-2"><?= $totalProductPf ?></p>
         </div>
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs">
-            <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Produk Rumah Tangga</p>
+            <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Perangkat Server & Komputer</p>
             <p class="text-2xl font-bold text-slate-800 mt-2"><?= $totalProductPrt ?></p>
         </div>
     </div>

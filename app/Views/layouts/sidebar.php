@@ -27,6 +27,13 @@ $segment = $uri->getSegment(1);
             <span class="sidebar-text transition-opacity duration-300">Dashboard</span>
         </a>
 
+        <?php if (canAccessS()): ?>
+        <a href="<?= base_url('/users') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $segment == 'users' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
+            <svg class="w-5 h-5 shrink-0 <?= $segment == 'users' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <span class="sidebar-text transition-opacity duration-300">Pengguna</span>
+        </a>
+        <?php endif; ?>
+
         <a href="<?= base_url('/products') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $segment == 'products' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
             <svg class="w-5 h-5 shrink-0 <?= $segment == 'products' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
             <span class="sidebar-text transition-opacity duration-300">Produk</span>

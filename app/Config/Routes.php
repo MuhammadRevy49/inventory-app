@@ -6,16 +6,18 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'AuthController::login');
 $routes->get('login', 'AuthController::login');
-$routes->post('auth/login', 'AuthController::attemptLogin');
+$routes->post('auth/login', 'AuthController::loginProcess');
 $routes->get('logout', 'AuthController::logout');
 
-$routes->group('', ['filter' => 'auth'], function($routes) {
-    $routes->get('/dashboard', 'DashboardController::index');
-
+$routes->group('', ['filter' => 'role:Super Admin, Gudang, Teknisi'], function($routes) {
+    $routes->get('dashboard', 'DashboardController::index');
     $routes->get('products', 'ProductController::index');
-    $routes->get('products/create', 'ProductController::create');
-    $routes->post('products', 'ProductController::store');
-    $routes->get('products/edit/(:num)', 'ProductController::edit/$1');
-    $routes->post('products/update/(:num)', 'ProductController::update/$1');
-    $routes->delete('products/delete/(:num)', 'ProductController::delete/$1');
+});
+
+$routes->group('products', ['filter' => 'role:Super Admin, Gudang'], function($routes) {
+    $routes->get('create', 'ProductController::create');
+    $routes->post('/', 'ProductController::store');
+    $routes->get('edit/(:num)', 'ProductController::edit/$1');
+    $routes->post('update/(:num)', 'ProductController::update/$1');
+    $routes->delete('delete/(:num)', 'ProductController::delete/$1');
 });

@@ -12,10 +12,10 @@
         <!-- Header Logo / Title -->
         <div class="text-center mb-8">
             <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white font-bold flex items-center justify-center mx-auto mb-4 shadow-md shadow-indigo-100 text-lg">
-                IM
+                IA
             </div>
             <h1 class="text-xl font-bold tracking-tight text-slate-900">Selamat Datang Kembali</h1>
-            <p class="text-sm text-slate-500 mt-1">Silakan masuk ke akun administrator Anda.</p>
+            <p class="text-sm text-slate-500 mt-1">Silakan masuk ke akun Anda.</p>
         </div>
 
         <!-- Notifikasi Error Flashdata -->
@@ -45,7 +45,7 @@
         </form>
 
         <div class="mt-6 text-center">
-            <p class="text-xs text-slate-400">Default: admin@inventory.com / password123</p>
+            <p class="text-xs text-slate-400">Ada kendala ? <a href="">klik bantuan disini.</a></p>
         </div>
     </div>
 

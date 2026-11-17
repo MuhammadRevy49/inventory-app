@@ -1,4 +1,6 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 use App\Models\UserModel;
 
@@ -12,29 +14,31 @@ class AuthController extends BaseController
         
         return view('auth/login');
     }
-
-    public function attemptLogin()
+    
+    public function loginProcess()
     {
         $session = session();
         $model = new UserModel();
-
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-
+        
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        
         $user = $model->where('email', $email)->first();
 
         if ($user) {
-            if (password_verify($password, $user['password']) || $password === 'password123') {
-                $sesData = [
-                    'id'        => $user['id'],
-                    'name'      => $user['name'],
-                    'email'     => $user['email'],
-                    'logged_in' => TRUE
+            if (password_verify($password, $user['password'])) {
+                // Simpan data session termasuk role
+                $sessionData = [
+                    'id'         => $user['id'],
+                    'name'       => $user['name'],
+                    'email'      => $user['email'],
+                    'role'       => $user['role'],
+                    'logged_in'  => TRUE
                 ];
-                $session->set($sesData);
+                $session->set($sessionData);
                 return redirect()->to('/dashboard');
             } else {
-                $session->setFlashdata('error', 'Password yang Anda masukkan salah.');
+                $session->setFlashdata('error', 'Password salah.');
                 return redirect()->back()->withInput();
             }
         } else {
@@ -45,8 +49,7 @@ class AuthController extends BaseController
 
     public function logout()
     {
-        $session = session();
-        $session->destroy();
+        session()->destroy();
         return redirect()->to('/login');
     }
 }

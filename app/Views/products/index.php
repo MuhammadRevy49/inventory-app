@@ -8,9 +8,9 @@
             <h1 class="text-2xl font-bold tracking-tight text-slate-900">Manajemen Produk</h1>
             <p class="text-sm text-slate-500">Kelola daftar inventori barang, stok, dan harga produk Anda.</p>
         </div>
-        <a href="<?= base_url('products/create') ?>" class="inline-flex items-center justify-center px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl shadow-sm shadow-indigo-100 transition-all">
-            + Tambah Produk Baru
-        </a>
+        <?php if (canAccessSG()): ?>
+            <a href="/products/create" class="inline-flex items-center justify-center px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl shadow-sm shadow-indigo-100 transition-all">+ Tambah Produk</a>
+        <?php endif; ?>
     </div>
 
     <!-- Flash Success Message -->
@@ -51,7 +51,9 @@
                         <th class="py-3 px-6">Supplier</th>
                         <th class="py-3 px-6">Stok</th>
                         <th class="py-3 px-6">Harga Jual</th>
+                        <?php if (canAccessSG()): ?>
                         <th class="py-3 px-6 text-right">Aksi</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 text-sm">
@@ -71,12 +73,14 @@
                             </td>
                             <td class="py-4 px-6 font-medium text-slate-800">Rp <?= number_format($p['selling_price'], 0, ',', '.') ?></td>
                             <td class="py-4 px-6 text-right space-x-2">
+                                <?php if (canAccessSG()): ?>
                                 <a href="<?= base_url('products/edit/' . $p['id']) ?>" class="text-indigo-600 hover:text-indigo-900 font-medium">Edit</a>
                                 <form action="<?= base_url('products/delete/' . $p['id']) ?>" method="post" class="inline">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="text-rose-600 hover:text-rose-900 font-medium ml-2" onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</button>
                                 </form>
+                                <?php endif; ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>
