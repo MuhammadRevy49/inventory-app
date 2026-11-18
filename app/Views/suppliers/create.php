@@ -32,17 +32,17 @@
 
             <div>
                 <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Nama Supplier</label>
-                <input type="text" name="nama_supplier" value="<?= old('nama_supplier') ?>" required class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all">
+                <input type="text" name="nama_supplier" value="<?= old('nama_supplier') ?>" required placeholder="Masukkan nama supplier..." class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all">
             </div>
 
             <div>
                 <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Kontak / No. Telepon</label>
-                <input type="text" name="kontak" value="<?= old('kontak') ?>" required class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all">
+                <input type="text" name="kontak" value="<?= old('kontak') ?>" required placeholder="Masukkan kontak supplier..." class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all">
             </div>
 
             <div>
                 <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Alamat Lengkap</label>
-                <textarea name="alamat" rows="3" required class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"><?= old('alamat') ?></textarea>
+                <textarea name="alamat" rows="3" required placeholder="Masukkan alamat lengkap supplier..." class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"><?= old('alamat') ?></textarea>
             </div>
 
             <div class="flex justify-end pt-4 border-t border-slate-100">

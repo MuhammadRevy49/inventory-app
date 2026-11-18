@@ -13,7 +13,7 @@
         <?php endif; ?>
     </div>
 
-    <!-- Flash Success Message -->
+    <!-- Success Message -->
     <?php if (session()->getFlashdata('success')): ?>
         <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-2xl text-sm font-medium text-emerald-600">
             <?= session()->getFlashdata('success') ?>
@@ -61,7 +61,7 @@
                         <tr class="hover:bg-slate-50/50 transition-colors">
                             <td class="py-4 px-6 font-medium text-slate-800"><?= esc($s['name']) ?></td>
                             <td class="py-4 px-6 text-slate-600"><?= esc($s['email']) ?></td>
-                            <td class="py-4 px-6 text-slate-600 max-w-[200px] truncate"><?= esc($s['password']) ?></td>
+                            <td class="py-4 px-6 text-slate-400 font-mono tracking-widest">••••••••</td>
                             <td class="py-4 px-6 text-slate-600 max-w-[200px] truncate"><?= esc($s['role']) ?></td>
                             <?php if (canAccessSG()): ?>
                             <td class="py-4 px-6 text-right space-x-2">
