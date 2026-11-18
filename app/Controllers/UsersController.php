@@ -17,6 +17,13 @@ class UsersController extends BaseController
 
     public function index()
     {
+        $search = $this->request->getGet('search');
+
+        if ($search) {
+            $this->model->like('name', $search)
+                        ->orLike('email', $search);
+        }
+
         $data['users'] = $this->model->findAll();
         return view('users/index', $data);
     }
