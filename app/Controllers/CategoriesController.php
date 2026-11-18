@@ -17,6 +17,11 @@ class CategoriesController extends BaseController
 
     public function index()
     {
+        $search = $this->request->getGet('search');
+        if ($search) {
+            $this->model->like('name', $search);
+        }
+
         $data['categories'] = $this->model->findAll();
         return view('categories/index', $data);
     }
