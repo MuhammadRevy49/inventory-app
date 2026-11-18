@@ -26,7 +26,6 @@ class ProductController extends BaseController
 
         $data['products'] = $query->findAll();
         
-        // Kirim search term ke view untuk dipertahankan di input field
         $data['search'] = $search;
         return view('products/index', $data);
     }
@@ -89,8 +88,30 @@ class ProductController extends BaseController
     {
         $productModel = new ProductModel();
 
+        $oldProduct = $productModel->find($id);
+        $newSku = $this->request->getPost('sku');
+
+        $rules = [
+            'name' => 'required',
+            'sku'  => 'required',
+        ];
+
+        if ($newSku !== $oldProduct['sku']) {
+            $rules['sku'] = 'required|is_unique[products.sku]';
+        }
+
+        $messages = [
+            'sku' => [
+                'is_unique' => 'SKU "' . $newSku . '" sudah digunakan oleh produk lain.'
+            ]
+        ];
+
+        if (!$this->validate($rules, $messages)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
         $updateData = [
-            'sku'            => $this->request->getPost('sku'),
+            'sku'            => $newSku,
             'name'           => $this->request->getPost('name'),
             'category_id'    => $this->request->getPost('category_id'),
             'supplier_id'    => $this->request->getPost('supplier_id'),
@@ -100,7 +121,7 @@ class ProductController extends BaseController
             'description'    => $this->request->getPost('description'),
         ];
 
-        if (!$productModel->update($id, $updateData)) {
+        if (!$productModel->skipValidation(true)->update($id, $updateData)) {
             return redirect()->back()->withInput()->with('errors', $productModel->errors());
         }
 
