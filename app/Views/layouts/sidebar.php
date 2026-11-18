@@ -51,6 +51,7 @@ $segment = $uri->getSegment(1);
             </a>
         </div>
 
+        <?php if (canAccessSG()): ?>
         <div class="space-y-1.5">
             <p class="sidebar-text px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 transition-opacity duration-300">Transaksi</p>
 
@@ -69,6 +70,7 @@ $segment = $uri->getSegment(1);
                 <span class="sidebar-text transition-opacity duration-300">Riwayat</span>
             </a>
         </div>
+        <?php endif; ?>
     </div>
 
     <div class="p-4 border-t border-slate-200 shrink-0 overflow-hidden whitespace-nowrap">
