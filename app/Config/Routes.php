@@ -39,3 +39,9 @@ $routes->group('categories', ['filter' => 'role:Super Admin, Gudang'], function(
     $routes->post('update/(:num)', 'CategoriesController::update/$1');
     $routes->delete('delete/(:num)', 'CategoriesController::delete/$1');
 });
+
+$routes->group('users', ['filter' => 'role:Super Admin'], function($routes) {
+    $routes->get('/', 'UsersController::index');
+    $routes->get('create', 'UsersController::create');
+    $routes->get('edit/(:num)', 'UsersController::edit/$1');
+});
