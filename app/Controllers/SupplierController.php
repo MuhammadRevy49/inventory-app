@@ -17,7 +17,16 @@ class SupplierController extends BaseController
 
     public function index()
     {
+        $search = $this->request->getGet('search');
+
+        if ($search) {
+            $this->model->like('name', $search)
+                        ->orLike('phone', $search)
+                        ->orLike('address', $search);
+        }
+
         $data['suppliers'] = $this->model->findAll();
+
         return view('suppliers/index', $data);
     }
 
