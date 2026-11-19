@@ -43,8 +43,6 @@ class MovementController extends BaseController
         return view('movements/logs', $data);
     }
 
-    // ... existing code ...
-
     public function out()
     {
         $productModel = new ProductModel();
