@@ -37,7 +37,7 @@ $segment = $uri->getSegment(1);
 
             <a href="<?= base_url('/products') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $segment == 'products' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
                 <svg class="w-5 h-5 shrink-0 <?= $segment == 'products' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                <span class="sidebar-text transition-opacity duration-300">Produk</span>
+                <span class="sidebar-text transition-opacity duration-300">Daftar Barang</span>
             </a>
 
             <a href="<?= base_url('/suppliers') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $segment == 'suppliers' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
@@ -52,21 +52,22 @@ $segment = $uri->getSegment(1);
         </div>
 
         <?php if (canAccessSG()): ?>
+        <?php $subSegment = $uri->getSegment(2); ?>
         <div class="space-y-1.5">
             <p class="sidebar-text px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 transition-opacity duration-300">Transaksi</p>
 
-            <a href="<?= base_url('/movements/in') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $segment == 'movements' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
-                <svg class="w-5 h-5 shrink-0 <?= $segment == 'movements' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 19V5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path></svg>
+            <a href="<?= base_url('/movements/in') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $subSegment == 'in' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
+                <svg class="w-5 h-5 shrink-0 <?= $subSegment == 'in' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 19V5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path></svg>
                 <span class="sidebar-text transition-opacity duration-300">Barang Masuk</span>
             </a>
 
-            <a href="<?= base_url('/movements/out') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $segment == 'movements' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
-                <svg class="w-5 h-5 shrink-0 <?= $segment == 'movements' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <a href="<?= base_url('/movements/out') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $subSegment == 'out' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
+                <svg class="w-5 h-5 shrink-0 <?= $subSegment == 'out' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 <span class="sidebar-text transition-opacity duration-300">Barang Keluar</span>
             </a>
 
-            <a href="<?= base_url('/movements/logs') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $segment == 'movements' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
-                <svg class="w-5 h-5 shrink-0 <?= $segment == 'movements' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <a href="<?= base_url('/movements/logs') ?>" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group <?= $subSegment == 'logs' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' ?>">
+                <svg class="w-5 h-5 shrink-0 <?= $subSegment == 'logs' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 <span class="sidebar-text transition-opacity duration-300">Riwayat</span>
             </a>
         </div>

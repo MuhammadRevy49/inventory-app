@@ -5,11 +5,11 @@
     <!-- Header -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-            <h1 class="text-2xl font-bold tracking-tight text-slate-900">Data Produk</h1>
-            <p class="text-sm text-slate-500">Daftar inventori barang, stok, dan harga produk Anda.</p>
+            <h1 class="text-2xl font-bold tracking-tight text-slate-900">Data Barang</h1>
+            <p class="text-sm text-slate-500">Daftar inventori barang, stok, dan harga barang Anda.</p>
         </div>
         <?php if (canAccessSG()): ?>
-            <a href="/products/create" class="inline-flex items-center justify-center px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl shadow-sm shadow-indigo-100 transition-all">+ Tambah Produk</a>
+            <a href="/products/create" class="inline-flex items-center justify-center px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl shadow-sm shadow-indigo-100 transition-all">+ Tambah Barang Baru</a>
         <?php endif; ?>
     </div>
 
@@ -29,7 +29,7 @@
                     type="text" 
                     name="search" 
                     value="<?= request()->getGet('search') ?>"
-                    placeholder="Cari nama produk atau SKU..." 
+                    placeholder="Cari nama barang atau SKU..." 
                     class="w-full pl-10 pr-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
                 >
                 <div class="absolute left-3.5 top-2.5 text-slate-400">
@@ -46,7 +46,7 @@
             <table class="w-full text-left border-collapse overflow-auto whitespace-nowrap">
                 <thead>
                     <tr class="bg-slate-50/70 border-b border-slate-100 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                        <th class="py-3 px-6">SKU / Nama Produk</th>
+                        <th class="py-3 px-6">SKU / Nama Barang</th>
                         <th class="py-3 px-6">Kategori</th>
                         <th class="py-3 px-6">Supplier</th>
                         <th class="py-3 px-6">Stok</th>
@@ -78,7 +78,7 @@
                                 <form action="<?= base_url('products/delete/' . $p['id']) ?>" method="post" class="inline">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" class="text-rose-600 hover:text-rose-900 font-medium ml-2" onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</button>
+                                    <button type="submit" class="text-rose-600 hover:text-rose-900 font-medium ml-2" onclick="return confirm('Yakin ingin menghapus barang ini?')">Hapus</button>
                                 </form>
                                 <?php endif; ?>
                             </td>
@@ -87,7 +87,7 @@
                     <?php else: ?>
                         <tr>
                             <td colspan="6" class="py-12 text-center text-slate-400">
-                                <p class="text-sm font-medium text-slate-600">Belum ada data produk yang tersimpan.</p>
+                                <p class="text-sm font-medium text-slate-600">Belum ada data barang yang tersimpan.</p>
                             </td>
                         </tr>
                     <?php endif; ?>

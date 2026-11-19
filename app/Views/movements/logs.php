@@ -1,7 +1,7 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <div class="mx-auto space-y-6">
-    <h1 class="text-2xl font-bold">Riwayat Transaksi</h1>
+    <h1 class="text-2xl font-bold">Riwayat Transaksi Barang</h1>
 
     <div class="bg-white border border-slate-200 rounded-2xl shadow-xs overflow-hidden">
         <table class="w-full text-sm text-left">
