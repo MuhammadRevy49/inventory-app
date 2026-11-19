@@ -48,3 +48,11 @@ $routes->group('users', ['filter' => 'role:Super Admin'], function($routes) {
     $routes->post('update/(:num)', 'UsersController::update/$1');
     $routes->delete('delete/(:num)', 'UsersController::delete/$1');
 });
+
+$routes->group('movements', ['filter' => 'role:Super Admin, Gudang'], function($routes) {
+    $routes->get('in', 'MovementController::in');
+    $routes->post('process-in', 'MovementController::processIn');
+    $routes->get('out', 'MovementController::out');
+    $routes->post('process-out', 'MovementController::processOut');
+    $routes->get('logs', 'MovementController::logs');
+});
