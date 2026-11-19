@@ -3,12 +3,17 @@
 <div class="mx-auto space-y-6">
     <h1 class="text-2xl font-bold">Riwayat Transaksi Barang</h1>
 
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-2xl text-sm font-medium text-emerald-600">
+            <?= session()->getFlashdata('success') ?>
+        </div>
+    <?php endif; ?>
     <div class="bg-white border border-slate-200 rounded-2xl shadow-xs overflow-hidden">
         <table class="w-full text-sm text-left">
             <thead class="bg-slate-50 text-slate-600 uppercase text-xs font-semibold">
                 <tr>
                     <th class="px-6 py-4">Waktu</th>
-                    <th class="px-6 py-4">Produk</th>
+                    <th class="px-6 py-4">Barang</th>
                     <th class="px-6 py-4">Tipe</th>
                     <th class="px-6 py-4">Jumlah</th>
                     <th class="px-6 py-4">Tujuan/Asal</th>
